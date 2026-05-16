@@ -1,0 +1,120 @@
+/* Investigation Board Specific Styles */
+
+.board-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.board-item.photo-item {
+    padding: 8px;
+}
+
+.board-item:hover::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 2px;
+    background: linear-gradient(135deg, #ff4444, #ff8888);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: glow 1s ease-in-out infinite;
+    pointer-events: none;
+}
+
+/* Connection animations */
+.connection-line {
+    stroke: #ff4444;
+    stroke-width: 2;
+    opacity: 0.6;
+    filter: drop-shadow(0 0 3px #ff4444);
+    transition: all 0.3s ease;
+}
+
+.connection-line:hover,
+.connection-line.active {
+    stroke: #ff6666;
+    stroke-width: 3;
+    opacity: 1;
+    filter: drop-shadow(0 0 8px #ff6666);
+}
+
+/* Item interaction states */
+.board-item.selected {
+    animation: glow 1.5s ease-in-out infinite;
+}
+
+.board-item.connected {
+    animation: highlight 1s ease-in-out;
+}
+
+/* Highlight animation */
+@keyframes highlight {
+    0%, 100% {
+        filter: brightness(1);
+    }
+    50% {
+        filter: brightness(1.3);
+    }
+}
+
+/* Draggable items (optional) */
+.board-item.dragging {
+    opacity: 0.7;
+    z-index: 1000;
+}
+
+/* Special item styling */
+.board-item[data-section="introducao"] {
+    border-color: #4488ff !important;
+}
+
+.board-item[data-section="evidencias"] {
+    border-color: #44aa44 !important;
+}
+
+.board-item[data-section="dna"] {
+    border-color: #ff8844 !important;
+}
+
+.board-item[data-section="tecnologia"] {
+    border-color: #aa44ff !important;
+}
+
+.board-item[data-section="psicologia"] {
+    border-color: #ff4488 !important;
+}
+
+.board-item[data-section="reconstrucao"] {
+    border-color: #ffaa44 !important;
+}
+
+/* Accessibility */
+.board-item:focus {
+    outline: 3px solid #ffff00;
+    outline-offset: 3px;
+}
+
+.board-item:focus-visible {
+    outline: 3px solid #ffff00;
+    outline-offset: 3px;
+}
+
+/* Print styles */
+@media print {
+    .board-item {
+        position: static !important;
+        page-break-inside: avoid;
+        margin-bottom: 20px;
+    }
+
+    .connections-svg {
+        display: none;
+    }
+
+    .hud-corner {
+        display: none;
+    }
+}

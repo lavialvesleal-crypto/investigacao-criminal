@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investigação Criminal - Quadro Investigativo</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/investigation-board.css">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+    <!-- Background effect -->
+    <div class="background-effect"></div>
+    
+    <!-- Investigation Board Container -->
+    <div class="investigation-container">
+        <!-- SVG for red string connections -->
+        <svg id="connections-svg" class="connections-svg"></svg>
+        
+        <!-- Board Items -->
+        <div class="board-items">
+            <!-- Case Title -->
+            <div class="board-item title-item" data-id="caso-principal">
+                <div class="item-content">
+                    <h1>CASO: O Roubo da Joia Antiga</h1>
+                    <p class="subtitle">Investigação em Andamento</p>
+                </div>
+            </div>
+
+            <!-- Introduction Section -->
+            <div class="board-item photo-item" data-id="intro" data-section="introducao" style="left: 5%; top: 15%; transform: rotate(-8deg);">
+                <div class="item-header">
+                    <span class="item-badge">🔦 INTRODUÇÃO</span>
+                </div>
+                <div class="item-content">
+                    <h3>Investigação Criminal</h3>
+                    <p>Clique para detalhes completos</p>
+                </div>
+            </div>
+
+            <!-- Evidence & Fingerprints Section -->
+            <div class="board-item document-item" data-id="evidencias" data-section="evidencias" style="right: 8%; top: 12%; transform: rotate(5deg);">
+                <div class="item-header">
+                    <span class="item-badge">🩹 EVIDÊNCIAS</span>
+                </div>
+                <div class="item-content">
+                    <h3>Impressões Digitais</h3>
+                    <p>Análise forense</p>
+                </div>
+            </div>
+
+            <!-- Biological Evidence Section -->
+            <div class="board-item evidence-item" data-id="dna" data-section="dna" style="left: 12%; top: 45%; transform: rotate(3deg);">
+                <div class="item-header">
+                    <span class="item-badge">🧬 DNA</span>
+                </div>
+                <div class="item-content">
+                    <h3>Perícia Biológica</h3>
+                    <p>Análise genética</p>
+                </div>
+            </div>
+
+            <!-- Forensic Technology Section -->
+            <div class="board-item document-item" data-id="tecnologia" data-section="tecnologia" style="right: 6%; top: 38%; transform: rotate(-4deg);">
+                <div class="item-header">
+                    <span class="item-badge">🔬 TECNOLOGIA</span>
+                </div>
+                <div class="item-content">
+                    <h3>Tecnologia Forense</h3>
+                    <p>Digital & Investigação</p>
+                </div>
+            </div>
+
+            <!-- Criminal Psychology Section -->
+            <div class="board-item photo-item" data-id="psicologia" data-section="psicologia" style="left: 8%; top: 70%; transform: rotate(6deg);">
+                <div class="item-header">
+                    <span class="item-badge">🧠 PSICOLOGIA</span>
+                </div>
+                <div class="item-content">
+                    <h3>Psicologia Criminal</h3>
+                    <p>Análise comportamental</p>
+                </div>
+            </div>
+
+            <!-- Case Reconstruction Section -->
+            <div class="board-item document-item" data-id="reconstrucao" data-section="reconstrucao" style="right: 10%; top: 62%; transform: rotate(-2deg);">
+                <div class="item-header">
+                    <span class="item-badge">🕶️ RECONSTRUÇÃO</span>
+                </div>
+                <div class="item-content">
+                    <h3>Análise do Caso</h3>
+                    <p>Conclusões investigativas</p>
+                </div>
+            </div>
+
+            <!-- Crime Scene Photo -->
+            <div class="board-item photo-item pinned-photo" data-id="cena-crime" style="left: 35%; top: 20%; transform: rotate(-12deg);">
+                <div class="photo-frame">
+                    <div class="photo-placeholder">
+                        📷 CENA DO CRIME
+                        <br><small>Museu Central - Ala Histórica</small>
+                    </div>
+                </div>
+                <div class="pin">📌</div>
+            </div>
+
+            <!-- Suspect Photo 1 -->
+            <div class="board-item photo-item pinned-photo" data-id="suspeito-1" style="left: 50%; top: 35%; transform: rotate(8deg);">
+                <div class="photo-frame suspect">
+                    <div class="photo-placeholder">
+                        🕵️ SUSPEITO #1
+                        <br><small>João Silva</small>
+                    </div>
+                </div>
+                <div class="pin">📌</div>
+            </div>
+
+            <!-- Suspect Photo 2 -->
+            <div class="board-item photo-item pinned-photo" data-id="suspeito-2" style="left: 65%; top: 50%; transform: rotate(-7deg);">
+                <div class="photo-frame suspect">
+                    <div class="photo-placeholder">
+                        🕵️ SUSPEITO #2
+                        <br><small>Maria Santos</small>
+                    </div>
+                </div>
+                <div class="pin">📌</div>
+            </div>
+
+            <!-- Suspect Photo 3 -->
+            <div class="board-item photo-item pinned-photo" data-id="suspeito-3" style="left: 55%; top: 68%; transform: rotate(5deg);">
+                <div class="photo-frame suspect">
+                    <div class="photo-placeholder">
+                        🕵️ SUSPEITO #3
+                        <br><small>Carlos Oliveira</small>
+                    </div>
+                </div>
+                <div class="pin">📌</div>
+            </div>
+
+            <!-- Fingerprint Evidence -->
+            <div class="board-item evidence-item" data-id="digito-1" style="left: 72%; top: 18%; transform: rotate(-15deg);">
+                <div class="fingerprint-item">
+                    <div class="fingerprint">🔍</div>
+                    <p>Impressão Digital #001</p>
+                </div>
+            </div>
+
+            <!-- Sticky Note 1 -->
+            <div class="board-item sticky-note" data-id="nota-1" style="left: 78%; top: 32%; transform: rotate(12deg);">
+                <div class="sticky-content">
+                    <p>Joia desapareceu entre 19h-21h</p>
+                </div>
+            </div>
+
+            <!-- Sticky Note 2 -->
+            <div class="board-item sticky-note" data-id="nota-2" style="left: 42%; top: 75%; transform: rotate(-8deg);">
+                <div class="sticky-content">
+                    <p>Câmeras sem gravação nesse período!</p>
+                </div>
+            </div>
+
+            <!-- Map Item -->
+            <div class="board-item map-item" data-id="mapa" style="left: 28%; top: 52%; transform: rotate(4deg);">
+                <div class="map-container">
+                    <div class="map-placeholder">🗺️ Mapa: Museu Central</div>
+                </div>
+            </div>
+
+            <!-- Timeline -->
+            <div class="board-item document-item timeline-item" data-id="timeline" style="right: 3%; top: 78%; transform: rotate(-6deg);">
+                <div class="timeline-header">⏰ CRONOGRAMA</div>
+                <div class="timeline-content">
+                    <p>18:00 - Museu aberto</p>
+                    <p>19:30 - Último avistamento</p>
+                    <p>21:00 - Desaparecimento detectado</p>
+                </div>
+            </div>
+
+            <!-- Clue Item -->
+            <div class="board-item clue-item" data-id="pista-1" style="left: 85%; top: 55%; transform: rotate(10deg);">
+                <div class="clue-content">
+                    <p>💄 Batonada vermelha encontrada</p>
+                </div>
+            </div>
+
+            <!-- Witness Statement -->
+            <div class="board-item document-item" data-id="testemunha-1" style="left: 18%; top: 88%; transform: rotate(3deg);">
+                <div class="document-header">📄 DEPOIMENTO</div>
+                <div class="document-content">
+                    <p>Testemunha: Carlos Mendes</p>
+                    <p>Viu pessoa estranha perto da vitrine</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for detailed information -->
+    <div class="modal" id="detailModal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <div class="modal-body" id="modalBody">
+                <!-- Content will be dynamically loaded -->
+            </div>
+        </div>
+    </div>
+
+    <!-- HUD Elements -->
+    <div class="hud-corner top-left">
+        <div class="hud-text">SISTEMA DE INVESTIGAÇÃO</div>
+        <div class="hud-text small">ACESSO: PERMITIDO</div>
+    </div>
+
+    <div class="hud-corner top-right">
+        <div class="hud-text">ARQUIVO</div>
+        <div class="hud-text small" id="itemCount">ITENS: 0</div>
+    </div>
+
+    <div class="hud-corner bottom-left">
+        <div class="hud-text">STATUS</div>
+        <div class="hud-text small status-indicator">🔴 ATIVO</div>
+    </div>
+
+    <div class="hud-corner bottom-right">
+        <div class="hud-text">DICA</div>
+        <div class="hud-text small" id="tipText">Clique nos itens do quadro</div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/investigation-board.js"></script>
+    <script src="js/animations.js"></script>
+</body>
+</html>

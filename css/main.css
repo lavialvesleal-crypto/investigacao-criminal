@@ -1,0 +1,300 @@
+/* Main Stylesheet for Forensic Investigation Board */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: 'Courier New', monospace;
+    background: #000;
+    color: #fff;
+}
+
+/* Background Effect */
+.background-effect {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(139, 0, 0, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(139, 0, 0, 0.08) 0%, transparent 50%),
+        linear-gradient(135deg, #0a0a0a 0%, #1a0000 100%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Investigation Container */
+.investigation-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #1a1a1a;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Cork Board Background Texture */
+.investigation-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 2px,
+            rgba(255, 255, 255, 0.03) 2px,
+            rgba(255, 255, 255, 0.03) 4px
+        ),
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 2px,
+            rgba(255, 255, 255, 0.02) 2px,
+            rgba(255, 255, 255, 0.02) 4px
+        );
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Board Items Container */
+.board-items {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+
+/* SVG Connections */
+.connections-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* HUD Corners */
+.hud-corner {
+    position: fixed;
+    padding: 15px 20px;
+    background: rgba(139, 0, 0, 0.3);
+    border: 2px solid rgba(255, 0, 0, 0.5);
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    z-index: 100;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+}
+
+.hud-corner.top-left {
+    top: 20px;
+    left: 20px;
+}
+
+.hud-corner.top-right {
+    top: 20px;
+    right: 20px;
+}
+
+.hud-corner.bottom-left {
+    bottom: 20px;
+    left: 20px;
+}
+
+.hud-corner.bottom-right {
+    bottom: 20px;
+    right: 20px;
+}
+
+.hud-text {
+    color: #ff4444;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+    margin: 5px 0;
+}
+
+.hud-text.small {
+    font-size: 10px;
+    color: #ff6666;
+    opacity: 0.8;
+}
+
+.status-indicator {
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    overflow-y: auto;
+}
+
+.modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: #1a1a1a;
+    border: 3px solid #ff4444;
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.5), inset 0 0 30px rgba(255, 0, 0, 0.1);
+    max-width: 600px;
+    max-height: 80vh;
+    width: 90%;
+    position: relative;
+    border-radius: 0;
+    overflow-y: auto;
+}
+
+.modal-close {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    background: #ff4444;
+    border: none;
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.modal-close:hover {
+    background: #ff6666;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.8);
+}
+
+.modal-body {
+    padding: 40px;
+    color: #ddd;
+    line-height: 1.8;
+}
+
+.modal-body h2 {
+    color: #ff4444;
+    margin-bottom: 20px;
+    font-size: 24px;
+    text-transform: uppercase;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+}
+
+.modal-body h3 {
+    color: #ff6666;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.modal-body p {
+    margin-bottom: 15px;
+    text-align: justify;
+}
+
+.modal-body ul, .modal-body ol {
+    margin-left: 20px;
+    margin-bottom: 15px;
+}
+
+.modal-body li {
+    margin-bottom: 8px;
+}
+
+.modal-body strong {
+    color: #ff8888;
+}
+
+.modal-body em {
+    color: #ffaaaa;
+}
+
+/* Scrollbar Styling */
+.modal-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: #0a0a0a;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background: #ff4444;
+    border-radius: 4px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+    background: #ff6666;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hud-corner {
+        padding: 10px 15px;
+        font-size: 10px;
+    }
+
+    .modal-content {
+        max-width: 95%;
+        max-height: 90vh;
+    }
+
+    .modal-body {
+        padding: 20px;
+    }
+
+    .modal-body h2 {
+        font-size: 18px;
+    }
+
+    .modal-body h3 {
+        font-size: 14px;
+    }
+
+    .modal-body p {
+        font-size: 14px;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .hud-corner,
+    .modal,
+    .modal-close {
+        display: none;
+    }
+}
